@@ -13,5 +13,37 @@
         <maven.compiler.target>18</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
+    <repositories>
+        <repository>
+            <id>spoofax</id>
+            <url>https://artifacts.metaborg.org/content/repositories/releases</url>
+        </repository>
+    </repositories>
+    <dependencies>
+        <dependency>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc11</artifactId>
+            <version>23.3.0.23.09</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle.database.graph</groupId>
+            <artifactId>opg-client</artifactId>
+            <version>24.1.0</version>
+        </dependency>
+    </dependencies>
+    <dependency>
+        <groupId>com.oracle.database.security</groupId>
+        <artifactId>oraclepki</artifactId>
+        <version>23.3.0.23.09</version>
+    </dependency>
+    <dependency>
+        <groupId>com.oracle.database.graph</groupId>
+        <artifactId>pgx-api</artifactId>
+        <version>24.1.0</version>
+    </dependency>
+    <dependency>
+        <groupId>com.oracle.database.graph</groupId>
+        <artifactId>graph-query-ir</artifactId>
+        <version>2.0.8.2</version>
+    </dependency>
 </project>

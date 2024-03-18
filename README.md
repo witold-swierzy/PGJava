@@ -1,5 +1,5 @@
-property graph demo
-this code demonstrates:
+Property Graph demo
+This code demonstrates:
    1. integration of Property Graph with SQL in Oracle Database 23c
    2. Java API for Property Graph Server
    It uses demonstration tables described in the following LiveLabs Workshop:

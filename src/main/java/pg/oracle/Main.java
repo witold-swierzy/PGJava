@@ -1,20 +1,33 @@
 package pg.oracle;
 
-import oracle.jdbc.pool.OracleDataSource;
-import oracle.pg.rdbms.GraphServer;
+/* property graph demo
+   this code demonstrates:
+   1. integration of Property Graph with SQL in Oracle Database 23c
+   2. Java API for Property Graph Server
+   It uses demonstration tables described in the following LiveLabs Workshop:
+   "Analyze, Query, and Visualize Property Graphs with Oracle Database"
+   https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/run-workshop?p210_wid=686&p210_wec=&session=108772142407826
+   Requirements:
+   1. Oracle Database 23c
+   2. Database user account ( <username> ) with the privileges described in the mentioned LiveLabs Workshop
+   3. Tables used in this workshop created in the mentioned schema
+   4. Oracle Property Graph Server installation using user account
+ */
+
 
 import java.sql.*;
+import oracle.jdbc.pool.OracleDataSource;
 import oracle.pg.rdbms.GraphServer;
 import oracle.pgx.api.*;
 
 public class Main {
-    private static String dbHost    = "130.61.110.25";
-    private static String pgxHost   = "130.61.73.166";
-    private static int dbPort       = 1521;
-    private static int pgxPort      = 7007;
-    private static String dbService = "demo.wssubnet0001.wsvcn0001.oraclevcn.com";
-    private static String username  = "oradev";
-    private static String password  = "WELcome__1234";
+    private static String dbHost    = "<database_hostname_or_op>";
+    private static String pgxHost   = "<graph_server_hostname_or_ip>";
+    private static int dbPort       = <listener_port_number_ususally_1521>;
+    private static int pgxPort      = <graph_server_port_number_usually_7007>;
+    private static String dbService = "<database_service_name>";
+    private static String username  = "<username>";
+    private static String password  = "<password>";
     private static String pgName = "CUSTOMER_GRAPH";
     public static void SQLPGDemo() {
         try {
@@ -63,7 +76,7 @@ public class Main {
 
     public static void PGXDemo() {
         try {
-            ServerInstance si = GraphServer.getInstance("http://"+pgxHost+":"+pgxPort,username,password.toCharArray());
+            ServerInstance si = GraphServer.getInstance("https://"+pgxHost+":"+pgxPort,username,password.toCharArray());
             PgxSession ses = si.createSession("my-session");
             System.out.println("Connected to graph server");
             PgxGraph graph = ses.readGraphByName(username.toUpperCase(), pgName, GraphSource.PG_SQL);
